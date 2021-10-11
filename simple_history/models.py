@@ -21,7 +21,7 @@ from django.utils.text import format_lazy
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 from simple_history import register
-from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor
+# from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor
 from simple_history import utils
 from . import exceptions
 from .manager import HistoryDescriptor
@@ -498,7 +498,7 @@ class HistoricalRecords(object):
     def m2m_changed(self, action, instance, sender, **kwargs):
         source_field_name, target_field_name = None, None
         for field_name, field_value in sender.__dict__.items():
-            if isinstance(field_value, models.fields.related.ReverseSingleRelatedObjectDescriptor):
+            if isinstance(field_value, models.fields.related.ManyToManyDescriptor):
                 if field_value.field.related.parent_model == kwargs['model']:
                     target_field_name = field_name
                 elif field_value.field.related.parent_model == type(instance):
