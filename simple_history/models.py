@@ -24,7 +24,7 @@ from simple_history import register
 from .reverse_related import (
     ForeignObjectRel, ManyToManyRel, ManyToOneRel, OneToOneRel,
 )
-
+from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor
 from simple_history import utils
 from . import exceptions
 from .manager import HistoryDescriptor
