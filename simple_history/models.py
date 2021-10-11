@@ -503,7 +503,7 @@ class HistoricalRecords(object):
                     target_field_name = field_name
                 elif field_value.field.related.parent_model == type(instance):
                     source_field_name = field_name
-        items = sender.objects.filter(**{source_field_name:instance})
+        items = str(sender.objects.filter(**{source_field_name:instance}))
         if kwargs['pk_set']:
             items = items.filter(**{target_field_name + '__id__in':kwargs['pk_set']})
         for item in items:
