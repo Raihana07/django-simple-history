@@ -498,12 +498,12 @@ class HistoricalRecords(object):
     def m2m_changed(self, action, instance, sender, **kwargs):
         source_field_name, target_field_name = None, None
         for field_name, field_value in sender.__dict__.items():
-            if isinstance(field_value, models.fields.related.ManyToManyDescriptor):
+            if isinstance(field_value, str(models.fields.related.ManyToManyDescriptor)):
                 if field_value.field.related.parent_model == kwargs['model']:
                     target_field_name = field_name
                 elif field_value.field.related.parent_model == type(instance):
                     source_field_name = field_name
-        items = str(sender.objects.filter(**{source_field_name:instance}))
+        items = sender.objects.filter(**{source_field_name:instance})
         if kwargs['pk_set']:
             items = items.filter(**{target_field_name + '__id__in':kwargs['pk_set']})
         for item in items:
