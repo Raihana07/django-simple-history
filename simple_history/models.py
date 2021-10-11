@@ -21,9 +21,6 @@ from django.utils.text import format_lazy
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 from simple_history import register
-from .reverse_related import (
-    ForeignObjectRel, ManyToManyRel, ManyToOneRel, OneToOneRel,
-)
 from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor
 from simple_history import utils
 from . import exceptions
