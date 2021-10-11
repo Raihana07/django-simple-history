@@ -498,7 +498,7 @@ class HistoricalRecords(object):
     def m2m_changed(self, action, instance, sender, **kwargs):
         source_field_name, target_field_name = None, None
         for field_name, field_value in sender.__dict__.items():
-            if isinstance(field_value, models.fields.related.ReverseSingleRelatedObjectDescriptor):
+            if isinstance(field_value, models.fields.related_descriptors.ReverseSingleRelatedObjectDescriptor):
                 if field_value.field.related.parent_model == kwargs['model']:
                     target_field_name = field_name
                 elif field_value.field.related.parent_model == type(instance):
