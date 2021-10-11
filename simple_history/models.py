@@ -510,11 +510,11 @@ class HistoricalRecords(object):
             if action == 'post_add':
                 if hasattr(item, 'skip_history_when_saving'):
                     return
-                self.create_historical_record(item, '+')
+                self.create_historical_record(item, '+', using=using)
             elif action == 'pre_remove':
-                self.create_historical_record(item, '-')
+                self.create_historical_record(item, '-', using=using)
             elif action == 'pre_clear':
-                self.create_historical_record(item, '-')
+                self.create_historical_record(item, '-', using=using)
 
    
    
